@@ -1,0 +1,14 @@
+
+& 'C:\Program Files (x86)\Android\android-sdk\tools\android' list targets
+
+android create uitest-project -n AndroidUITestDemo -t 5 -p 'C:\Source_Code\AndroidUITestDemo'
+
+set ANDROID_HOME="C:\Program Files (x86)\Android\android-sdk\tools"
+
+cd "C:\Source_Code\AndroidUITestDemo"
+
+ant build
+
+adb push "C:\Source_Code\AndroidUITestDemo\bin" /data/local/tmp/
+
+adb shell uiautomator runtest AndroidUITestDemo.jar -c us.uitestdemo.LaunchSettings
